@@ -1,0 +1,13 @@
+neofetch
+nitrogen
+pavucontrol
+flameshot
+lxappearance
+google-noto-coloremoji-fonts
+lf
+feh
+thorium-browser
+code
+libvirt-daemon
+libvirt 
+virt-manager
