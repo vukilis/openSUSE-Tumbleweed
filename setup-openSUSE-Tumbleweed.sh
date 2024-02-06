@@ -1,3 +1,6 @@
+#!/bin/bash
+clear
+
 echo -ne "\e[1;31m
 ----------------------------------------------------------------------------
                 Automated openSUSE Tumbleweed Setup Script
@@ -52,9 +55,17 @@ do sudo zypper --non-interactive install $pkg
 done
 
 # echo "########### Install Thorium ###########"
-wget https://github.com/Alex313031/thorium/releases/download/M120.0.6099.235/thorium-browser_120.0.6099.235_SSE3.rpm
-sudo zypper install thorium-browser_120.0.6099.235_SSE3.rpm
+# wget https://github.com/Alex313031/thorium/releases/download/M120.0.6099.235/thorium-browser_120.0.6099.235_SSE3.rpm
+
+thorium_latest_ver=$(git ls-remote https://github.com/Alex313031/Thorium | grep refs/tags | grep -oE "([a-zA-Z0-9.-_]*)" | awk '{ print substr($0, 10); }' | sort --version-sort | tail -n 1)
+echo $thorium_latest_ver is latest version;
+thorium_package="thorium-browser_${thorium_latest_ver#/M}_SSE3.rpm"
+wget https://github.com/Alex313031/thorium/releases/download/$thorium_latest_ver/$thorium_package -O thorium-browser.rpm
+sudo zypper install "thorium-browser.rpm"
+rm -rf thorium-browser.rpm
 
 # echo "########### Install KVM ###########"
 sudo zypper --non-interactive in -t pattern kvm_server kvm_tools
 
+# install snap packages
+sudo snap install tldr
