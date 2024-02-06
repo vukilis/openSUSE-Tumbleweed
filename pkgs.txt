@@ -11,3 +11,8 @@ code
 libvirt-daemon
 libvirt 
 virt-manager
+docker
+docker-compose
+ncdu
+lsd
+fd
