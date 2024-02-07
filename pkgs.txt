@@ -16,3 +16,5 @@ docker-compose
 ncdu
 lsd
 fd
+progress
+python311-pipx
