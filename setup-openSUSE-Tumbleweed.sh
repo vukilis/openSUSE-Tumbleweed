@@ -69,3 +69,31 @@ sudo zypper --non-interactive in -t pattern kvm_server kvm_tools
 
 # install snap packages
 sudo snap install tldr
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Setup GRUB BIOS Bootloader
+-------------------------------------------------------------------------
+"
+
+sudo sed -i 's/set timeout=8/set timeout=3/' /boot/grub2/grub.cfg
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Setup SDDM Display Manager
+-------------------------------------------------------------------------
+"
+
+echo -e "\nEnabling Login Display Manager"
+systemctl enable sddm.service
+echo -e "\nSetup SDDM Theme"
+sudo tar -xzvf ~/sugar‑candy.tar.gz -C /usr/share/sddm/themes
+cat <<EOF > /etc/sddm.conf
+[Theme]
+Current=sugar-candy
+EOF
+sudo systemctl restart sddm.service
+# sddm-greeter --test-mode --theme /usr/share/sddm/themes/sugar-candy
+
+
+
