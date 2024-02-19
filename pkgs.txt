@@ -18,3 +18,4 @@ lsd
 fd
 progress
 python311-pipx
+elinks
