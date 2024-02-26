@@ -19,3 +19,13 @@ fd
 progress
 python311-pipx
 elinks
+bat
+ripgrep
+fzf
+procs
+bottom
+dust
+duf
+curlie
+dog
+micro
